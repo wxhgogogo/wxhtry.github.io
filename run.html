@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.run {
+		width: 200px;
+		height: 246px;
+	transition: all 1s;
+		background: red;
+	}
+</style>
+<body>
+	<div v-if="ok" class="run"></div>
+	
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<template v-if="loginType==='username'">
+		<label>Username</label>
+		<input placeholder="Enter your username" key="username-input">
+	</template>
+	<template>
+		<label>Email</label>
+		<input placeholder="Enter your email address" key="email-input">
+	</template>
+</body>
+</html>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue();
+	vm:{
+		el:
+	}
+
+</script> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.fade-enter-active {
+			transition: all .2s ease;
+		}
+		.fade-enter,.fade-leave-to {
+			opacity: 0;
+		}
+		.scale-enter-active {
+			transition: all .4s ease;
+		}
+		.scale-enter,.scale-leave-to{
+			opacity: 0;
+			transform:  scale(0.96
+				);
+		}
+
+</style>
+</head>
+<body >
+	<div id="app1">
+		<div class="top-tips">{{tipsMsg}}</div>
+		
+			<transition class="fade" ><div class="input-wrapper" v-if="inputShow">
+			<div class="flex wrapper-item">
+				<label class="flex2 item-input">{{account}}</label>
+				<div clas="flex4 item-input">
+					<input type="tel" id="account" maxlength="11" placeholder="账号/手机号" v-model="account">
+				</div>
+			</div>
+			<div class="flex wrapper-item">
+				<label class="flex2 item-input">{{city}}</label>
+				<div clas="flex4 item-input">
+					<input type="text" id="city"  placeholder="请选择城市" v-model="city"  v-on:click="toggleView">
+				</div>
+			</div>
+			<div class="flex wrapper-item">
+				<label class="flex2 item-input">{{password}}</label>
+				<div clas="flex4 item-input">
+					<input type="password" id="password"  placeholder="请输入授权的密码" v-model="password">
+				</div>
+			</div>
+		</div>
+	
+		</div>
+		<div class="flex verticla-center license">
+			<div class="checked"></div>
+			<div class="text">我已阅读并同意</div>
+			<div><a href="javascript:void(0);">《授权协议》</a></div>
+		</div>
+		<div>
+			<button id="app1-next-btn" type="button" class="next-button" v-on:click="nextButtonClick">开始授权</button>
+		</div></transition>
+		<transition class="fade"><div id="city-picker" v-if="cityPickerShow" >
+		<div class="flex cross-center city-name" v-for="(item,index) in cityList" :key="item.id"  v-on:click="onSelected(item)">
+			{{item.cityName}}
+		</div>
+
+		</div></transition>
+		<transition class="scale" ><div class="flex cross-center modal" v-if="modalShow"></div></transition>
+		</div>
+<script type="text/javascript" src="vue.js"></script>	
+</body>
+</html>
+<script type="text/javascript">
+	var app1 = new Vue({
+		el:'#app1',
+		data: {
+			inputShow: true,
+			cityPickerShow: false,
+			tipsMsg : '我们不会保存您的账号密码。',
+			account : '',
+			password : '',
+			cityList:[
+				{cityName:'北京'},
+				{cityName:'伤害'},
+				{cityName:'浙江'},
+				{cityName:'成都'},
+				{cityName:'北京'}
+
+			]
+		},
+		methods: {
+			toggleView: function() {
+				this.inputShow= !this.inputShow;
+				this.cityPickerShow=!this.cityPickerShow;
+			},
+			nextButtonClick: function() {
+				alert("account:"+this.account+"\npassword:"+this.password)
+
+			},
+			onSelected: function(item) {
+				this.city = item.cityName;
+				this.toggleView();
+			}
+		}
+	})
+
+</script>
